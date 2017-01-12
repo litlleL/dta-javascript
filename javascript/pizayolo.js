@@ -16,7 +16,6 @@ class RecipesService {
         }
 
         let array = [];
-        let array2 = [];
         pizza.forEach(function(item) {
             let contenu = recipe.filter(function(items) {
                 return item === items;
@@ -29,6 +28,8 @@ class RecipesService {
         if (array.length !== recipe.length) {
             return false;
         } else {
+
+            let array2 = [];
             recipe.forEach(function(item) {
                 let contenu = pizza.filter(function(items) {
                     return item === items;
