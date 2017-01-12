@@ -1,0 +1,26 @@
+<script src="pizayolo.js">
+</script>
+
+<script>
+    console.log('ici');
+
+    let recipesService = new RecipesService();
+
+    recipesService.getRecipesNames()
+        .then(names => {
+            console.log('names', names);
+        })
+
+    recipesService.getRecipe('recette 1')
+        .then(recipe => {
+            console.log('ma recette', recipe);
+        })
+
+    recipesService.queryRecipes('1')
+        .then(recipes => {
+            console.log('recipes with "1"', recipes);
+        });
+
+    var test = recipesService.isRecipeCompliant(['a', 'b', 'c'], ['a', 'a', 'c']);
+    console.log(test)
+</script>

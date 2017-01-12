@@ -1,0 +1,222 @@
+<script>
+    /* console.log('toto');
+            
+            var array = [2, 5, 6];
+
+            var arrayFoisDeux = array.map(function(item) {
+                return item * 2;
+            });
+
+            console.log('arrayFoisDeux', arrayFoisDeux);
+
+            var name = 'thomas';
+            console.log('name', name[0]);
+
+            var names = ['thomas', 'alphonse', 'nicolas'];
+
+            var b = names.filter(function(name) {
+                return name[0] === 'a';
+            });
+
+            console.log('names', b);
+
+            var reduce = names.reduce(function(accu, name, index) {
+                if (index === 0) {
+                    return name;
+                }
+                return accu + ',' + name;
+            }, '');
+
+            console.log('reduce', reduce);
+
+            var o = {
+                name: 'objet',
+                m: function() {
+                    "use strict";
+                    console.log('m', this.name);
+
+                    var self = this;
+                }
+            };
+
+            o.m();
+
+
+        function getNames(users) {
+                return users.map(function (user){
+                    return user.name;
+                });
+        }
+
+        function getName(names) {
+                return names.map(function (name){
+                    return name.toUpperCase;
+                });
+        }
+
+        function asyncOp(majNames){
+            return asyncPromises(majNames);
+        }
+
+        function err(){
+            console.log('err');
+        }
+
+        function sperr(err){
+            throw(err);
+        }
+           
+        getUsers
+            .then(getNames,sperr)
+            .then(getName)
+            .then(asyncOp)
+            .then(function (res){
+                //-------
+            })
+            .then(null,err);
+
+        Promise.all([
+            getToppings(),
+            getCommands()
+        ]).then(function (resp){
+            var toppings = resp[0];
+            var commands = resp[1];
+        });
+        */
+
+
+    /*function f(){
+        console.log('ici ');
+        return promiseTimeout(1000);
+    }
+
+    setTimeout(f, 1000);
+
+    function promiseTimeout(time){
+
+        var executor = (function executor (resolve, reject) {
+            setTimeout(resolve, time);
+        });
+
+        return new Promise(executor);
+
+    }
+
+    var p = new promiseTimeout(2000);
+    p
+    .then(f)
+    .then(f)
+    .then(console.log('ici à nouveau'));
+    */
+    var arrayRecipe = ['mushrooms', 'tomatoes', 'mozarella'];
+    var arrayToppings = ['mozarella', 'mushrooms', 'tomatoes'];
+    var arrayToppingsFalse = ['mozarella', 'origon', 'tomatoes'];
+
+    function samePizza(pizza, recipe) {
+        if (pizza.length !== recipe.length) {
+            return false;
+        }
+        var array = [];
+        pizza.forEach(function(item) {
+            var contenu = recipe.filter(function(items) {
+                return item === items;
+            });
+            if (contenu.length != 0) {
+                array.push(contenu)
+            }
+        });
+        if (array.length !== recipe.length) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    console.log(samePizza(arrayToppings, arrayRecipe));
+    console.log(samePizza(arrayToppingsFalse, arrayRecipe));
+
+
+
+    const multiply = (a, b) => {
+        //code complexe
+        return a * b;
+    }
+
+    console.log(multiply(2, 4));
+
+
+    /*function f([a]){
+        console.log(a);
+    }
+
+    f([1,2,3])
+
+    let promiseOfUser;
+    let promiseOfJob;
+
+    Promise.all({
+        promiseOfUser,
+        promiseOfJob
+    }).then(([user, jobs]) =>{
+        //do something
+    })*/
+
+    const obj = {
+        name: 'toto',
+        lasName: 'titi'
+    }
+
+    function logName({
+        name,
+        lastName
+    }) {
+        console.log(name);
+    }
+
+    logName(obj)
+
+    function f(name, ...values) {
+        console.log(name, values);
+    }
+
+    f('Ulysse', 1, 2, 3)
+
+
+    function f2(name, one, ...values) {
+        console.log(name, one, values);
+    }
+
+    f2('Ulysse', 1, 2, 3)
+
+    const args = [0, 1, 2];
+
+    function f3(x, y, z) {
+        console.log('f3', x, y, z)
+    }
+
+    f3(...args);
+
+    const array = [...args, 3, 4]
+
+    console.log('array', array);
+
+    class Person {
+        constructor(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender
+        }
+
+        incrementAge() {
+            this.age += 1;
+        }
+    }
+
+    let user = new Person('toto', 24, 'H');
+
+    console.log(user)
+
+    user.incrementAge();
+
+    console.log(user)
+</script>

@@ -1,0 +1,13 @@
+{
+    "recipes": [{
+            "id": 1,
+            "name": "recette 1",
+            "toppings": "['toto', 'titi']"
+        },
+        {
+            "id": 2,
+            "name": "recette 2",
+            "toppings": "['toto', 'titi', 'tata']"
+        }
+    ]
+}
