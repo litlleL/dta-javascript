@@ -1,3 +1,5 @@
+import lodash from 'lodash';
+
 export class RecipesService {
     constructor() {
         this.recipes = null;
@@ -81,6 +83,17 @@ export class RecipesService {
                     recipe.name.toLowerCase().includes(query.toLowerCase())
                 )
             );
+    }
+
+    getToppings() {
+        return this.getRecipes()
+            .then(recipes =>
+                lodash(recipes.map(recipe => recipe.toppings))
+                .flatten()
+                .uniq()
+                .value()
+            )
+            .catch(this.handleError)
     }
 
     handleError(err) {

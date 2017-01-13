@@ -14,7 +14,8 @@ export class PizzeriaService {
                     const recipeName = recipesNames[index];
                     this.pool.push(recipeName);
                     console.log('POOL : ', this.pool);
-
+                    const pooldiv = $('#pool');
+                    pooldiv.html(this.pool.join('<br>'));
                     if (this.pool.length >= 10) {
                         alert('GAME OVER');
                         clearInterval(intervalId);
