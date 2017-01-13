@@ -25,4 +25,8 @@ Dans un second shell
 
 ```
 >npm start
-```# dta-javascript
+```
+
+## tooling
+
+npm install webpack babel-loader babel-core babel-preset-es2015 --save-dev  
