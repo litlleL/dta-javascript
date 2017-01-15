@@ -11,7 +11,12 @@ recipesService
     .getRecipesNames()
     .then(recipes => {
         $('#recipes')
-            .html(recipes.map(recipe => `<li style= "list-style-type:none;" data-recipe="${ recipe }"> <button class="btn btn-primary  btn-block">${ recipe }</button></li>`).join(''));
+            .html(recipes
+            .map(recipe => 
+            `<li style= "list-style-type:none;" data-recipe="${ recipe }"> 
+            <button class="btn btn-primary  btn-block">${ recipe }</button></li>`)
+            .join('')
+                    );
 
         $('#recipes li').on('click', function() {
             recipesService
