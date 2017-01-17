@@ -26,16 +26,10 @@
 <body ng-app="app">
 
 
-    <h1>Angular</h1>
     <div ng-controller="MyFirstController as ctrl">
 
-        <!-- <ul>
-            <li ng-repeat="user in ctrl.users" ng-if="ctrl.startWithT(user)">{{ user.name }}</li>
-        </ul>-->
-        <!-- <ul>
-            <li ng-repeat="user in ctrl.filterUsers(ctrl.users)">{{ user.name | uppercase }}</li>
-        </ul>
--->
+        <h2>Angular <small>{{ ctrl.version }}</small></h2>
+
         <ul>
             <li ng-repeat="user in ctrl.users track by $index">
                 <button ng-click="ctrl.show(user)">{{ $index + 1 }}</button>
@@ -45,13 +39,6 @@
 
         <p ng-class="{joli: ctrl.clicked, beau: ctrl.clicked}" ng-click="ctrl.classApplicator()">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vel quia quis nihil. Quia quis odio iusto quas dolorum et officiis quo dolorem sed exercitationem totam, quisquam, repellendus. Culpa, repellat!
         </p>
-
-        <input type="text" ng-model="ctrl.name">
-
-        <ul>
-            <li ng-repeat="user in ctrl.filter()">{{ user.name }}</li>
-        </ul>
-
 
 
         <input type="text" ng-model="name">
@@ -68,22 +55,29 @@
                 <tr>
                     <th><a href="#" ng-click="ctrl.order('name')">Nom</a></th>
                     <th><a href="#" ng-click="ctrl.order('age')">Age</a></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="user in ctrl.users |  orderBy:ctrl.orderPred:ctrl.reverse  track by $index">
                     <td>{{ user.name }}</td>
                     <td>{{ user.age }}</td>
+                    <td>
+                        <button ng-disabled="user.deleted" class="pull-right btn" ng-click="ctrl.delete(user)">Supprimer</button>
+                        <button class="pull-right btn" ng-click="ctrl.edit(user)">Modifier</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <form class="form-horizontal " name="userForm" novalidate ng-submit="ctrl.save(userForm, userAdd)">
+        <form class="form-horizontal " name="userForm" novalidate ng-submit="ctrl.save(userForm, ctrl.userAdd)">
             <fieldset>
-                <legend>Create User</legend>
-                <div class="form-group" ng-class="{ invalid: userForm.nom.$invalid && userForm.nom.$dirty }">
+                <legend ng-if="!ctrl.userAdd.id">Create User</legend>
+                <legend ng-if="ctrl.userAdd.id">Edit User</legend>
+                <div class="form-group">
                     <label class="col-md-4 control-label">Nom</label>
                     <div class="col-md-4">
-                        <input name="nom" class="form-control input-md" ng-model="userAdd.nom" required ng-maxlength="4">
+                        <input name="nom" class="form-control input-md" ng-model="ctrl.userAdd.name" required ng-maxlength="25">
                     </div>
                     <p class="text-danger" ng-if="userForm.nom.$error.required && userForm.nom.$dirty">Obligatoire</p>
                     <p class="text-danger" ng-if="userForm.nom.$error.maxlength && userForm.nom.$dirty">Trop long</p>
@@ -91,19 +85,22 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label">Age</label>
                     <div class="col-md-4">
-                        <input name="age" type="number" class="form-control input-md" ng-model="userAdd.age" required>
+                        <input name="age" type="number" class="form-control input-md" ng-model="ctrl.userAdd.age" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label">valider</label>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">vailder</button>
+                        <button type="submit" class="btn btn-primary"> 
+                            <span ng-if="!ctrl.userAdd.id">Ajouter cet utilisateur</span>
+                            <span ng-if="ctrl.userAdd.id">Modifier cet utilisateur</span>
+                        </button>
+                        <button type="button" ng-click="ctrl.cancel()" class="btn">Annuler</button>
                     </div>
                 </div>
             </fieldset>
         </form>
 
-        <pre>{{ userForm.$valid }}</pre>
     </div>
 
 </body>
