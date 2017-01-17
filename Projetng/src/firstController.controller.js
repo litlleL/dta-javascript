@@ -1,10 +1,4 @@
-angular.module('app', [])
-
-.run(function() {
-    console.log('PizzaYOLO !');
-})
-
-.controller('MyFirstController', class MyFirstController {
+export class MyFirstController {
 
     constructor() {
         this.name = '';
@@ -58,12 +52,15 @@ angular.module('app', [])
         }
         this.orderPred = order;
     }
+    save(form, userAdd) {
+        if (form.$invalid) return;
 
-})
+        this.users.push({
+            name: userAdd.nom,
+            age: userAdd.age
+        })
 
-.filter('exclam', function() {
-    return (input, size = 1) => {
-        if (typeof input !== 'string') return '';
-        return input + '!'.repeat(size);
+        console.log(this.users)
     }
-})
+
+}

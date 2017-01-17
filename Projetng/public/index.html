@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="app.bundle.js"></script>
+
+
+    <style>
+        .joli {
+            color: red;
+        }
+        
+        .beau {
+            border: 1px solid green;
+        }
+        
+        input.ng-invalid.ng-dirty {
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body ng-app="app">
+
+
+    <h1>Angular</h1>
+    <div ng-controller="MyFirstController as ctrl">
+
+        <!-- <ul>
+            <li ng-repeat="user in ctrl.users" ng-if="ctrl.startWithT(user)">{{ user.name }}</li>
+        </ul>-->
+        <!-- <ul>
+            <li ng-repeat="user in ctrl.filterUsers(ctrl.users)">{{ user.name | uppercase }}</li>
+        </ul>
+-->
+        <ul>
+            <li ng-repeat="user in ctrl.users track by $index">
+                <button ng-click="ctrl.show(user)">{{ $index + 1 }}</button>
+                <span ng-if="user.show">{{ user.name }}</span>
+            </li>
+        </ul>
+
+        <p ng-class="{joli: ctrl.clicked, beau: ctrl.clicked}" ng-click="ctrl.classApplicator()">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vel quia quis nihil. Quia quis odio iusto quas dolorum et officiis quo dolorem sed exercitationem totam, quisquam, repellendus. Culpa, repellat!
+        </p>
+
+        <input type="text" ng-model="ctrl.name">
+
+        <ul>
+            <li ng-repeat="user in ctrl.filter()">{{ user.name }}</li>
+        </ul>
+
+
+
+        <input type="text" ng-model="name">
+        <ul>
+            <li ng-repeat="user in ctrl.users | filter:name ">{{ user.name }}</li>
+        </ul>
+
+        <h2>{{ 'bonjour' | exclam:3 }}</h2>
+        <h2>{{ 'bonjour' | exclam }}</h2>
+        <strong>Le doyen: {{ctrl.users | doyen}}</strong>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><a href="#" ng-click="ctrl.order('name')">Nom</a></th>
+                    <th><a href="#" ng-click="ctrl.order('age')">Age</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in ctrl.users |  orderBy:ctrl.orderPred:ctrl.reverse  track by $index">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.age }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <form class="form-horizontal " name="userForm" novalidate ng-submit="ctrl.save(userForm, userAdd)">
+            <fieldset>
+                <legend>Create User</legend>
+                <div class="form-group" ng-class="{ invalid: userForm.nom.$invalid && userForm.nom.$dirty }">
+                    <label class="col-md-4 control-label">Nom</label>
+                    <div class="col-md-4">
+                        <input name="nom" class="form-control input-md" ng-model="userAdd.nom" required ng-maxlength="4">
+                    </div>
+                    <p class="text-danger" ng-if="userForm.nom.$error.required && userForm.nom.$dirty">Obligatoire</p>
+                    <p class="text-danger" ng-if="userForm.nom.$error.maxlength && userForm.nom.$dirty">Trop long</p>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Age</label>
+                    <div class="col-md-4">
+                        <input name="age" type="number" class="form-control input-md" ng-model="userAdd.age" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">valider</label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">vailder</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+        <pre>{{ userForm.$valid }}</pre>
+    </div>
+
+</body>
+
+
+</html>
