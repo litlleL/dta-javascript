@@ -1,16 +1,6 @@
-export function eldestAgeFilter() {
-
-    return (function(user) {
-        var array = user
-        var tab = array.map(items => items.age)
-        var max = Math.max(...tab)
-        return max;
-    })
-}
-
-export function eldestFilter() {
+export function EldestFilter() {
     return (users) => {
-        if (!users instanceof Array) return '';
+        if (!users instanceof Array || !users || !users.length) return '';
 
         let max = users[0];
         users.forEach((user) => {

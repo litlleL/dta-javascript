@@ -1,0 +1,33 @@
+<div class="container">
+    <a class="pull-right btn btn-primary btn-large" ng-href="/user">Ajouter un utilisatuer</a>
+    <h2>Utilisateur <small>{{ ctrl.version }}</small></h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><a href="#" ng-click="ctrl.order('name')">Nom</a></th>
+                <th><a href="#" ng-click="ctrl.order('age')">Age</a></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="user in ctrl.users |  orderBy:ctrl.orderPred:ctrl.reverse  track by $index">
+                <td>
+                    <a ng-href="/user/{{user.id}}"> 
+                        {{ user.name }}
+                    </a>
+                </td>
+                <td>{{ user.age }}</td>
+                <td style="text-align:right" ng-if="!ctrl.undo[user.id]">
+                    <button ng-click="ctrl.deleteUser(user)" class="btn btn-default btn-warning">Supprimer</button>
+                </td>
+                <td style="text-align:right" ng-if="ctrl.undo[user.id]">
+                    <button ng-click="ctrl.cancelDelete(user)" type="button" class="btn btn-default btn-warning">Annuler</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>

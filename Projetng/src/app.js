@@ -1,22 +1,37 @@
 import angular from 'angular';
+import ngRoute from 'angular-route';
 
-import { exclamationFilter } from './exclamation.filter'
-import { eldestAgeFilter } from './eldest.filter'
-import { eldestFilter } from './eldest.filter'
-import { MyFirstController } from './firstController.controller'
-import { UserService } from './userService.service'
+import UserModule from './user';
 
-angular.module('app', [])
+import { ExclamationFilter } from './exclamation.filter';
 
-.controller('MyFirstController', MyFirstController)
+angular.module('app', [
+        ngRoute,
+        UserModule
+    ])
+    .filter('exclamation', ExclamationFilter)
+    .value('Version', '1.0.0')
 
-.filter('exclam', exclamationFilter)
-    .filter('doyen', eldestAgeFilter)
-    .filter('eldest', eldestFilter)
+.config(function($routeProvider, $locationProvider) {
 
-.service('SuperService', UserService)
+    $locationProvider.html5Mode(true);
 
-.value('Version', '2.0.0')
+    $routeProvider
+        .when('/', {
+            template: '<h1>Bienvenue {{ ctrl.name }}</h1>',
+            controller: function() {
+                this.name = 'Livio';
+            },
+            controllerAs: 'ctrl'
+        })
+        .when('/about', {
+            template: '<h1>About</h1>'
+        })
+        .otherwise({
+            templateUrl: 'notFound.html',
+        });
+
+})
 
 .run(function() {
     console.log('PizzaYOLO !');

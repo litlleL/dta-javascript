@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <title>Angular</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="app.bundle.js"></script>
-
-
+    <script src="/app.bundle.js"></script>
     <style>
         .joli {
             color: red;
@@ -21,88 +19,37 @@
             border-color: red;
         }
     </style>
+    <base href="/">
 </head>
 
 <body ng-app="app">
 
-
-    <div ng-controller="MyFirstController as ctrl">
-
-        <h2>Angular <small>{{ ctrl.version }}</small></h2>
-
-        <ul>
-            <li ng-repeat="user in ctrl.users track by $index">
-                <button ng-click="ctrl.show(user)">{{ $index + 1 }}</button>
-                <span ng-if="user.show">{{ user.name }}</span>
-            </li>
-        </ul>
-
-        <p ng-class="{joli: ctrl.clicked, beau: ctrl.clicked}" ng-click="ctrl.classApplicator()">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vel quia quis nihil. Quia quis odio iusto quas dolorum et officiis quo dolorem sed exercitationem totam, quisquam, repellendus. Culpa, repellat!
-        </p>
-
-
-        <input type="text" ng-model="name">
-        <ul>
-            <li ng-repeat="user in ctrl.users | filter:name ">{{ user.name }}</li>
-        </ul>
-
-        <h2>{{ 'bonjour' | exclam:3 }}</h2>
-        <h2>{{ 'bonjour' | exclam }}</h2>
-        <strong>Le doyen: {{ctrl.users | doyen}}</strong>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th><a href="#" ng-click="ctrl.order('name')">Nom</a></th>
-                    <th><a href="#" ng-click="ctrl.order('age')">Age</a></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="user in ctrl.users |  orderBy:ctrl.orderPred:ctrl.reverse  track by $index">
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.age }}</td>
-                    <td>
-                        <button ng-disabled="user.deleted" class="pull-right btn" ng-click="ctrl.delete(user)">Supprimer</button>
-                        <button class="pull-right btn" ng-click="ctrl.edit(user)">Modifier</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <form class="form-horizontal " name="userForm" novalidate ng-submit="ctrl.save(userForm, ctrl.userAdd)">
-            <fieldset>
-                <legend ng-if="!ctrl.userAdd.id">Create User</legend>
-                <legend ng-if="ctrl.userAdd.id">Edit User</legend>
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Nom</label>
-                    <div class="col-md-4">
-                        <input name="nom" class="form-control input-md" ng-model="ctrl.userAdd.name" required ng-maxlength="25">
-                    </div>
-                    <p class="text-danger" ng-if="userForm.nom.$error.required && userForm.nom.$dirty">Obligatoire</p>
-                    <p class="text-danger" ng-if="userForm.nom.$error.maxlength && userForm.nom.$dirty">Trop long</p>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Age</label>
-                    <div class="col-md-4">
-                        <input name="age" type="number" class="form-control input-md" ng-model="ctrl.userAdd.age" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-4 control-label">valider</label>
-                    <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary"> 
-                            <span ng-if="!ctrl.userAdd.id">Ajouter cet utilisateur</span>
-                            <span ng-if="ctrl.userAdd.id">Modifier cet utilisateur</span>
-                        </button>
-                        <button type="button" ng-click="ctrl.cancel()" class="btn">Annuler</button>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">PizzaYOLO</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    <li>
+                        <a href="/users">Users</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div ng-view></div><small>{{ ctrl.version }}</small>
     </div>
-
 </body>
 
 
