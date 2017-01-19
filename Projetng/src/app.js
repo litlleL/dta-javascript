@@ -1,13 +1,19 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
 
+import bootstrap_rating from 'angular-ui-bootstrap/src/rating';
+
 import UserModule from './user';
+
+import SoundBox from './sound-box';
 
 import { ExclamationFilter } from './exclamation.filter';
 
 angular.module('app', [
         ngRoute,
-        UserModule
+        UserModule,
+        SoundBox,
+        bootstrap_rating
     ])
     .filter('exclamation', ExclamationFilter)
     .value('Version', '1.0.0')
@@ -26,6 +32,9 @@ angular.module('app', [
         })
         .when('/about', {
             template: '<h1>About</h1>'
+        })
+        .when('/soundbox', {
+            template: `<sound-form></sound-form><sound-box></sound-box>`
         })
         .otherwise({
             templateUrl: 'notFound.html',

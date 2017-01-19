@@ -4,19 +4,21 @@
       "name": "Empereur Thaurissan",
       "age": 46,
       "email": "asdrubal.livio@gmail.com",
-      "id": 7
+      "id": 7,
+      "rating": 0
     },
     {
       "name": "Garrosh",
       "age": 48,
       "email": "fawzi.nassim@gmail.com",
-      "id": 8
+      "id": 8,
+      "rating": 0
     },
     {
       "id": 9,
       "name": "Jaina Proudmoore",
       "email": "astrid-hlavacek@hotmail.fr",
-      "age": 24
+      "age": 28
     },
     {
       "name": "Illidan Hurlorage",

@@ -1,0 +1,29 @@
+sound-button {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    box-shadow: 10px 10px 5px #ddd;
+    padding: 2.5em 1em 1em 1em;
+    margin: 2em;
+    border-radius: 1em;
+    background: purple;
+    color: #fff;
+}
+
+sound-button button {
+    color: #777;
+}
+
+sound-button button.close {
+    color: #fff;
+    opacity: 1;
+    position: absolute;
+    top: 3px;
+    right: 8px;
+}
+
+sound-button div.checkbox {
+    position: absolute;
+    top: 0;
+    left: 8px;
+}

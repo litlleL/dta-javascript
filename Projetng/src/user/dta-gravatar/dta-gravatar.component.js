@@ -7,7 +7,6 @@ class DtaGravatarController {
 
     $onInit() {
         this.md5 = md5(this.email || '');
-
     }
 
     deact() {

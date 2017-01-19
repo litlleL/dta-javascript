@@ -26,7 +26,6 @@ export default angular.module('user', [
 .component('dtaUser', DtaUser)
 
 
-
 .config(function($routeProvider) {
 
     $routeProvider
@@ -52,7 +51,6 @@ export default angular.module('user', [
         }
     }
 })
-
 
 
 .name;

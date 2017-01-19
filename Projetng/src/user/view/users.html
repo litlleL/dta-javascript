@@ -17,6 +17,9 @@
                     <a ng-href="/user/{{user.id}}"> 
                         {{ user.name }}
                     </a>
+                    <div class="form-group">
+                        <span uib-rating ng-model="user.rating" max="10"></span>
+                    </div>
                 </td>
                 <td>{{ user.age }}</td>
                 <td>

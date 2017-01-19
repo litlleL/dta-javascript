@@ -1,0 +1,18 @@
+<h1>Ajout Son</h1>
+
+<form name="soundForm" novalidate ng-submit="$ctrl.add(soundForm, $ctrl.src)">
+
+    <div class="form-group">
+        <label>URL</label>
+        <input ng-model="$ctrl.src.url" name="url" required type="text" class="form-control">
+        <p class="text-danger" ng-if="soundForm.url.$error.required && soundForm.url.$dirty">Obligatoire</p>
+    </div>
+
+    <div class="form-group">
+        <label>Titre</label>
+        <input ng-model="$ctrl.src.titre" name="titre" required type="text" class="form-control">
+        <p class="text-danger" ng-if="soundForm.titre.$error.required && soundForm.titre.$dirty"> Obligatoire</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ajouter cette audio</button>
+</form>
