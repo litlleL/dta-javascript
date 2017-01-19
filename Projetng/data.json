@@ -3,42 +3,38 @@
     {
       "name": "Empereur Thaurissan",
       "age": 46,
+      "email": "asdrubal.livio@gmail.com",
       "id": 7
     },
     {
       "name": "Garrosh",
       "age": 48,
+      "email": "fawzi.nassim@gmail.com",
       "id": 8
     },
     {
       "id": 9,
       "name": "Jaina Proudmoore",
+      "email": "astrid-hlavacek@hotmail.fr",
       "age": 24
     },
     {
       "name": "Illidan Hurlorage",
       "age": 47,
+      "email": "joel.torib@gmail.com",
       "id": 10
     },
     {
       "name": "Malfurion Hurlorage",
       "age": 35,
+      "email": "prepontkevin@gmail.com",
       "id": 11
     },
     {
       "name": "Medhiv",
       "age": 48,
+      "email": "asdrubal.livio@gmail.com",
       "id": 12
-    },
-    {
-      "name": "murloc",
-      "age": 122,
-      "id": 13
-    },
-    {
-      "name": "qsdqsdqsd",
-      "age": 123,
-      "id": 14
     }
   ]
 }

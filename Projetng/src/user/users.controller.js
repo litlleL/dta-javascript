@@ -39,4 +39,9 @@ export class UsersController {
     cancelDelete(user) {
         this.$timeout.cancel(this.undo[user.id]);
     }
+
+    deactivate() {
+        console.log('deactivate');
+    }
+
 }

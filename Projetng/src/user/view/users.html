@@ -6,7 +6,7 @@
             <tr>
                 <th><a href="#" ng-click="ctrl.order('name')">Nom</a></th>
                 <th><a href="#" ng-click="ctrl.order('age')">Age</a></th>
-                <th></th>
+                <th>Email</th>
                 <th></th>
             </tr>
         </thead>
@@ -19,6 +19,10 @@
                     </a>
                 </td>
                 <td>{{ user.age }}</td>
+                <td>
+                    <dta-gravatar on-deactivate="ctrl.deactivate()" email="user.email">
+                    </dta-gravatar>
+                </td>
                 <td style="text-align:right" ng-if="!ctrl.undo[user.id]">
                     <button ng-click="ctrl.deleteUser(user)" class="btn btn-default btn-warning">Supprimer</button>
                 </td>

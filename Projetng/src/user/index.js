@@ -6,6 +6,9 @@ import { UsersController } from './users.controller';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
+import { DtaGravatar } from './dta-gravatar/dta-gravatar.component'
+import { DtaUser } from './dta-user/dta-user.component'
+
 export default angular.module('user', [
     ngRoute
 ])
@@ -17,6 +20,12 @@ export default angular.module('user', [
 .filter('eldest', EldestFilter)
 
 .service('UserService', UserService)
+
+.component('dtaGravatar', DtaGravatar)
+
+.component('dtaUser', DtaUser)
+
+
 
 .config(function($routeProvider) {
 
@@ -32,5 +41,18 @@ export default angular.module('user', [
             controllerAs: 'ctrl'
         })
 })
+
+.directive("major", function() {
+    return {
+        require: "ngModel",
+        link: function(scope, element, attrs, ngModelCtrl) {
+            ngModelCtrl.$validators.major = function(value) {
+                return value >= 18;
+            };
+        }
+    }
+})
+
+
 
 .name;

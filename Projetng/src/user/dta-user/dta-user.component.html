@@ -1,0 +1,26 @@
+<h1 ng-if="!$ctrl.user.id">Créer un Utilisateur</h1>
+<h1 ng-if="$ctrl.user.id">Modifier l'utilisateur</h1>
+<form ng-class="{ invalid: userForm.$invalid && userForm.$dirty }" name="userForm" novalidate ng-submit="$ctrl.saveUser(userForm, $ctrl.user)" class="well">
+
+    <div class="form-group">
+        <label for="name">Nom</label>
+        <input ng-model="$ctrl.user.name" name="name" required ng-maxlength="20" id="name" type="text" class="form-control">
+        <p class="text-danger" ng-if="userForm.name.$error.required && userForm.name.$dirty">Obligatoire</p>
+        <p class="text-danger" ng-if="userForm.name.$error.maxlength && userForm.name.$dirty">Trop long</p>
+    </div>
+    <div class="form-group">
+        <label for="name">email</label>
+        <input ng-model="$ctrl.user.email" name="email" id="email" type="email" class="form-control">
+        <p class="text-danger" ng-if="userForm.email.$error.required && userForm.email.$dirty">Obligatoire</p>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input ng-model="$ctrl.user.age" name="age" id="age" type="number" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+    <a type="button" ng-href="/users" class="btn btn-warning btn-large">Annuler</a>
+
+</form>
