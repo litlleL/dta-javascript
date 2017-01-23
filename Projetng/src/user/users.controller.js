@@ -16,7 +16,7 @@ export class UsersController {
 
     }
 
-    sort(predicat) {
+    order(predicat) {
         if (this.predicat === predicat) {
             this.reverse = !this.reverse;
         }
